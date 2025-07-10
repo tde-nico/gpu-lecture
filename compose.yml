@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "1337:22"
+    volumes:
+      - ./home/:/root/
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
